@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Quiz Application 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure, fullscreen-based **Quiz Application** built using **React**, **Supabase**, and **Redux**, designed to prevent cheating and provide a smooth assessment experience. The application includes authentication, topic-based quizzes, real-time scoring, and progress tracking with a modern UI powered by **Ant Design**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Features
 
-## React Compiler
+### 🔐 Authentication
+- User **Signup & Login** using Supabase Auth
+- Secure session handling
+- Auth-protected routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📚 Topics & Quiz Flow
+- Topics listing page
+- Topic-based questions and options
+- One quiz attempt per topic (can be enforced via backend)
 
-## Expanding the ESLint configuration
+### 🧠 Quiz System
+- Multiple-choice questions
+- Answer selection with validation
+- Previous / Next navigation
+- Progress indicator
+- Final score calculation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🛡️ Anti-Cheating & Security
+- **Fullscreen mode is mandatory**
+- Quiz pauses and shows warning if fullscreen is exited
+- Option to cancel quiz if fullscreen is not resumed
+- User cannot switch tabs or exit fullscreen unnoticed
+- Quiz auto-handles fullscreen enter/exit using browser Fullscreen API
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🎨 UI / UX
+- Built using **Ant Design**
+- Responsive and modern UI
+- Loading states and feedback messages
+- Result screen with pass/fail status
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Frontend
+- **React (TypeScript)**
+- **Redux Toolkit** (state management)
+- **React Router DOM**
+- **Ant Design**
+- **Tailwind CSS** (for layout and styling)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Backend / Services
+- **Supabase**
+  - Authentication
+  - Database (PostgreSQL)
+  - Secure API access
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🗂️ Project Structure
+
