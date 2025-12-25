@@ -62,10 +62,7 @@ const Quiz = () => {
   useEffect(() => {
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () =>
-      document.removeEventListener(
-        "fullscreenchange",
-        handleFullscreenChange
-      );
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, [quizStarted, showResults]);
 
   /* ---------------- DATA FETCH ---------------- */
@@ -173,8 +170,11 @@ const Quiz = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center bg-black">
-        <Spin size="large" />
+      <div className="min-h-screen w-full flex items-center justify-center bg-black">
+        <div className="text-center">
+          <Spin size="large" className="mb-4" />
+          <p className="text-white text-lg">Loading...</p>
+        </div>
       </div>
     );
   }
@@ -189,7 +189,9 @@ const Quiz = () => {
       <div className="h-screen w-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">
           <TrophyOutlined
-            className={`text-7xl ${passed ? "text-yellow-400" : "text-gray-400"}`}
+            className={`text-7xl ${
+              passed ? "text-yellow-400" : "text-gray-400"
+            }`}
           />
           <h1 className="text-4xl font-bold mt-4">
             {passed ? "PASSED" : "FAILED"}
@@ -217,18 +219,8 @@ const Quiz = () => {
       <Modal open={showWarning} footer={null} closable={false} centered>
         <div className="text-center">
           <WarningOutlined className="text-5xl text-red-500 mb-4" />
-          <p className="mb-4">
-            Fullscreen is required to continue the quiz.
-          </p>
+          <p className="mb-4">Quiz cancelled fullscreen is required.</p>
           <Space>
-            <Button
-              onClick={() => {
-                enterFullscreen();
-                setShowWarning(false);
-              }}
-            >
-              Continue
-            </Button>
             <Button danger onClick={() => navigate("/topics")}>
               Exit
             </Button>
@@ -242,18 +234,20 @@ const Quiz = () => {
         strokeColor="#fff"
       />
 
-      <h2 className="text-3xl font-bold mt-8">
-        {currentQuestion.question}
-      </h2>
+      <h2 className="text-3xl font-bold mt-8">{currentQuestion.question}</h2>
 
       <Radio.Group
         value={answers[currentQuestion.id]}
         onChange={(e) => handleSelect(e.target.value)}
         className="mt-6 w-full"
       >
-        <Space direction="vertical" className="w-full">
+        <Space direction="vertical" className="w-full text-white">
           {currentOptions.map((opt) => (
-            <Radio key={opt.id} value={opt.id} className="text-white">
+            <Radio
+              key={opt.id}
+              value={opt.id}
+              className="!text-white !text-2xl !pt-5"
+            >
               {opt.option}
             </Radio>
           ))}
